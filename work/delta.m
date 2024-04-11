@@ -1,3 +1,3 @@
 function y = delta(t)
-dt = 0.01;
+dt = 1;
 y = (u(t)-u(t-dt))/dt;
