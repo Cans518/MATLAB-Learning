@@ -14,3 +14,5 @@ plot(t, z);
 title('Convolution of x(t) and y(t)');
 xlabel('t');
 ylabel('x(t) * y(t)');
+
+save_figure_as_image(figure,'Program3_5');

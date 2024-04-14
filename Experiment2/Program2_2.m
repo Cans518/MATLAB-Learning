@@ -1,6 +1,5 @@
-clear % 清除所有变量
-close all % 关闭所有图形窗口
-clc; % 清空命令窗口
+% 清除环境
+clear_all;
 
 
 % 定义时间范围
@@ -13,6 +12,7 @@ x = exp(-0.5*t) .* u(t);
 t_y = 1.5*t + 3;
 y = exp(-0.5*t_y) .* u(t_y);
 
+figure;
 % 绘制 x(t) 和 y(t)
 subplot(2,1,1); % 在图形窗口的上半部分绘制子图
 plot(t, x, 'b');
@@ -28,11 +28,4 @@ xlabel('t');
 ylabel('y(t)');
 grid on;
 
-% 检查目录是否存在，如果不存在则创建
-foldername = 'picture';
-if ~exist(foldername, 'dir')
-    mkdir(foldername);
-end
-
-set(gcf, 'PaperPositionMode', 'auto')  % 设置绘图窗口分辨率与尺寸一致
-print(sprintf('%s/program2_2.jpg', foldername'), '-djpeg', '-r300');  % 保存图形，分辨率为300dpi
+save_figure_as_image(figure,'Program2_2');
