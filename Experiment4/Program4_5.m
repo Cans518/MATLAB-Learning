@@ -1,5 +1,4 @@
-clear
-close all
+clear_all;
 
 % 基础信号
 fs_base = 10000;  % 一个足够高的采样频率，以模拟连续信号

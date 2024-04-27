@@ -6,7 +6,7 @@ n = -10:10; % 选择时间窗为 -10 <= n <= 10
 x1 = 0.5 .^ abs(n); % 计算信号值
 
 
-figure;
+fig = figure;
 subplot(2,1,1); % 在图形窗口的上半部分绘制子图
 stem(n, x1, 'b', 'filled'); % 绘制离散信号
 title('信号 x[n] = 0.5^{|n|}');
@@ -25,4 +25,4 @@ xlabel('t');
 ylabel('x(t)');
 grid on;
 
-save_figure_as_image(figure,'Program2_1');
+save_figure_as_image(fig,'Program2_1');

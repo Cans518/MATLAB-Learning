@@ -27,6 +27,8 @@ for i = 1:length(alpha_values)
     ylabel('幅度');
 end
 
+save_figure_as_image(fig1,'Program4_3_1');
+
 fig2 = figure;
 
 for i = 1:length(alpha_values)
@@ -43,5 +45,4 @@ for i = 1:length(alpha_values)
     grid on;
 end
 
-save_figure_as_image(fig1,'Program4_3_1');
 save_figure_as_image(fig2,'Program4_3_2');

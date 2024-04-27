@@ -1,3 +1,5 @@
+clear_all;
+
 % 导入所有必要的符号函数
 syms n z a
 

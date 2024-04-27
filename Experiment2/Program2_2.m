@@ -12,7 +12,7 @@ x = exp(-0.5*t) .* u(t);
 t_y = 1.5*t + 3;
 y = exp(-0.5*t_y) .* u(t_y);
 
-figure;
+fig = figure;
 % 绘制 x(t) 和 y(t)
 subplot(2,1,1); % 在图形窗口的上半部分绘制子图
 plot(t, x, 'b');
@@ -28,4 +28,4 @@ xlabel('t');
 ylabel('y(t)');
 grid on;
 
-save_figure_as_image(figure,'Program2_2');
+save_figure_as_image(fig,'Program2_2');

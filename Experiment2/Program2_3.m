@@ -13,7 +13,7 @@ x1 = (n+6 >= 0) - (n+6 >= 8);
 % 右移序列 x2[n] = x[n-6]
 x2 = (n-6 >= 0) - (n-6 >= 8);
 
-figure;
+fig = figure;
 % 绘制 x[n]、x1[n] 和 x2[n]
 subplot(3,1,1); % 在图形窗口的上部分绘制子图
 stem(n, x, 'b', 'filled');
@@ -36,4 +36,4 @@ xlabel('n');
 ylabel('x2[n]');
 grid on;
 
-save_figure_as_image(figure,'Program2_3');
+save_figure_as_image(fig,'Program2_3');
