@@ -6,12 +6,12 @@ b = 1;  % 分子系数
 a = [1, 2, 2, 1];  % 分母系数
 
 % 计算频率响应
-[H, w] = freqs(b, a, logspace(-1, 1, 500));
+[H , w]= freqs(b, a, linspace(0,5,200));
 
 % 绘制幅度响应
 fig = figure;
 subplot(2, 1, 1);
-semilogx(w, 20*log10(abs(H)),"LineWidth",1);
+plot(w, abs(H),"LineWidth",1);
 grid on;
 set(gca,'FontName','Microsoft YaHei');  % 设置字体
 title('幅度响应');
@@ -20,7 +20,7 @@ ylabel('幅度 (dB)');
 
 % 绘制相位响应
 subplot(2, 1, 2);
-semilogx(w, rad2deg(angle(H)),"LineWidth",1);
+plot(w, angle(H),"LineWidth",1);
 grid on;
 set(gca,'FontName','Microsoft YaHei');  % 设置字体
 title('相位响应');

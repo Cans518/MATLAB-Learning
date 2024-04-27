@@ -5,7 +5,7 @@ clear_all;
 alpha_values = [0.9, -0.9];
 
 % 创建图形窗口
-fig = figure;
+fig1 = figure;
 
 % 对每个 alpha 值计算和绘制频响
 for i = 1:length(alpha_values)
@@ -27,4 +27,21 @@ for i = 1:length(alpha_values)
     ylabel('幅度');
 end
 
-save_figure_as_image(fig,'Program4_3');
+fig2 = figure;
+
+for i = 1:length(alpha_values)
+    alpha = alpha_values(i);
+
+    n = -10:0.001:10;
+    f = 1./(1-alpha.*exp(-1i*n));
+    subplot(length(alpha_values), 1, i);
+    plot(n, abs(f),"LineWidth", 1);
+    set(gca,'FontName','Microsoft YaHei');
+    title(['\alpha = ', num2str(alpha)]);
+    xlabel('频率');
+    ylabel('幅度');
+    grid on;
+end
+
+save_figure_as_image(fig1,'Program4_3_1');
+save_figure_as_image(fig2,'Program4_3_2');

@@ -9,6 +9,7 @@ F = (s+3)/(s^3 + 3*s^2 + 6*s + 4);
 
 % 计算 F(s) 的 Laplace 反变换
 f = ilaplace(F);
+disp(f)
 
 fig = figure;
 
@@ -17,5 +18,6 @@ fplot(f, [0, 10],"LineWidth",1)  % 绘制 t 在 [0, 10] 范围内的图像
 
 % 添加包含 LaTeX 公式的标题
 title(['$f(t) = ', latex(f), '$'], 'Interpreter', 'latex')
+
 
 save_figure_as_image(fig, 'Program5_3')
