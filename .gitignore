@@ -1,4 +1,7 @@
 MATLAB-Learning.code-workspace
 *.png
 *.jpg
-test.m
+1.py
+*.json
+*.txt
+.gitignore
