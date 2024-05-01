@@ -1,4 +1,5 @@
 import colorsys
+import sys
 
 import numpy as np
 import torch
@@ -8,6 +9,8 @@ from yolox_nets.yolo import YoloBody
 from yolox_utils.utils import (cvtColor, get_classes, preprocess_input, resize_image,
                          show_config)
 from yolox_utils.utils_bbox import decode_outputs, non_max_suppression
+
+sys.path.insert(0, '../')
 
 class YOLO(object):
     _defaults = {

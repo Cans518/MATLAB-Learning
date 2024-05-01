@@ -1,5 +1,5 @@
 from paho.mqtt import client as mqtt
-from Person import Person
+from lib.Person import Person
 import requests
 import uuid
 import cv2

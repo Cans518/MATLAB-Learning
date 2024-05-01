@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import torch
+import sys
 from PIL import Image, ImageDraw, ImageFont
 from tqdm import tqdm
 
@@ -12,6 +13,7 @@ from utils.utils import (Alignment_1, compare_faces, letterbox_image,
                          preprocess_input)
 from utils.utils_bbox import (decode, decode_landm, non_max_suppression,
                               retinaface_correct_boxes)
+sys.path.insert(0, '../')
 
 class Retinaface(object):
     _defaults = {

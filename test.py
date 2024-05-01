@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.insert(0, 'lib/')
 from Person import Person
 import cv2
 import json

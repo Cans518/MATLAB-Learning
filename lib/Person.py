@@ -8,6 +8,8 @@ import cv2
 import sys
 import base64
 
+sys.path.insert(0, '../')
+
 
 class Person(object):
     def __init__(self):
