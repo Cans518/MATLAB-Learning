@@ -11,7 +11,7 @@ if __name__ == '__main__':
     except:
         print('Open Error! Try again!')
     a = person.detect_image(image)
-    # http_image, http_name = person.detect_image(image)
+    http_image, http_name = person.detect_image(image)
     te = input('Input image filename:')
     json_data = {
         "eventId": "7180423a",
