@@ -19,11 +19,6 @@ class Person(object):
         # 转换为PIL格式
         s_image = Image.fromarray(image)
         persenboxes = self.yolo.detect_image(s_image)
-        for i in range(len(persenboxes)):
-            box = persenboxes[i]
-            cv2.rectangle(image, (box[0], box[1]), (box[2], box[3]), (0, 255, 0), 10)
-        cv2.imwrite('output.jpeg', image)
-        return 0
         name_date = []
         info = []
         for i in range(len(persenboxes)):
