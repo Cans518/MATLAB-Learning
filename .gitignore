@@ -1,4 +1,8 @@
 MATLAB-Learning.code-workspace
 *.png
 *.jpg
-test.m
+*.jpeg
+1.py
+*.json
+*.pyc
+test.*
