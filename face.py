@@ -1,6 +1,6 @@
 import cv2
 from PIL import Image
-from retinaface import Retinaface
+from lib.retinaface import Retinaface
 
 if __name__ == "__main__":
     retinaface = Retinaface()

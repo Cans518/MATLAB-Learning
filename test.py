@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.insert(0, 'lib/')
-from Person import Person
+from lib.Person import Person
 import cv2
 import json
 
@@ -12,7 +12,6 @@ if __name__ == '__main__':
         image = cv2.imread(img)
     except:
         print('Open Error! Try again!')
-    a = person.detect_image(image)
     http_image, http_name = person.detect_image(image)
     json_data = {
         "eventId": "7180423a",

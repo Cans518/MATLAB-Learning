@@ -6,6 +6,7 @@ class Moving(object):
 
     def __init__(self):
         self.mp_holistic = mp.solutions.holistic
+
     
     def moving(self,image):
         self.holistic = self.mp_holistic.Holistic(static_image_mode=False)

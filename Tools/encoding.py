@@ -1,4 +1,10 @@
 import os
+import sys
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+parent_dir = os.path.dirname(script_dir)
+lib_dir = os.path.join(parent_dir, 'lib')
+sys.path.append(lib_dir)
 
 from retinaface import Retinaface
 
@@ -8,7 +14,11 @@ from retinaface import Retinaface
 '''
 retinaface = Retinaface(1)
 
-list_dir = os.listdir("face_dataset")
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+parent_dir = os.path.dirname(script_dir)
+
+list_dir = os.listdir(os.path.join(parent_dir,'face_dataset'))
 image_paths = []
 names = []
 for name in list_dir:

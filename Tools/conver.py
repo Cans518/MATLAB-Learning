@@ -1,4 +1,6 @@
 from PIL import Image
+import sys
+sys.path.insert(0, '../')
 import os
 from tqdm import tqdm
 
@@ -30,9 +32,15 @@ def convert_to_24bit_depth(input_dir, output_dir):
         image.save(output_path)
 
 if __name__ == "__main__":
-    # 指定输入和输出目录
-    input_directory = 'face_dataset'
-    output_directory = 'output'
+    script_path = os.path.abspath(__file__)
+
+    # 获取当前脚本的父目录
+    script_dir = os.path.dirname(script_path)
+    parent_dir = os.path.dirname(script_dir)
+
+    # 拼接得到文件的完整路径
+    input_directory = os.path.join(parent_dir, 'face_dataset')
+    output_directory = os.path.join(parent_dir, 'face_dataset_24bit')
 
     # 调用函数进行转换
     convert_to_24bit_depth(input_directory, output_directory)

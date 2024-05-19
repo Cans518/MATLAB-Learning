@@ -76,7 +76,8 @@ class YOLO(object):
     #---------------------------------------------------#
     def generate(self):
         self.net    = YoloBody(self.num_classes, self.phi)
-        device      = torch.device('cpu')
+        # device      = torch.device('cpu')
+        device      = torch.device('cuda')
         self.net.load_state_dict(torch.load(self.model_path, map_location=device))
         self.net    = self.net.eval()
         print('{} model, and classes loaded.'.format(self.model_path))

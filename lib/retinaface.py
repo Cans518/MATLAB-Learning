@@ -2,6 +2,9 @@
 import numpy as np
 import torch
 import sys
+sys.path.insert(0, '../')
+import cv2
+import os
 from PIL import Image, ImageDraw, ImageFont
 from tqdm import tqdm
 
@@ -13,7 +16,15 @@ from utils.utils import (Alignment_1, compare_faces, letterbox_image,
                          preprocess_input)
 from utils.utils_bbox import (decode, decode_landm, non_max_suppression,
                               retinaface_correct_boxes)
-sys.path.insert(0, '../')
+
+
+# 获得脚本的目录
+script_path = os.path.abspath(__file__)
+script_dir = os.path.dirname(script_path)
+parent_dir = os.path.dirname(script_dir)
+# 生成字体目录
+font_path = os.path.join(parent_dir, 'model_data/simhei.ttf')
+
 
 class Retinaface(object):
     _defaults = {
@@ -39,7 +50,7 @@ class Retinaface(object):
         "facenet_input_shape"   : [160, 160, 3],
         #   facenet所使用的人脸距离门限
         "facenet_threhold"      : 0.9,
-        "cuda"                  : False
+        "cuda"                  : True
     }
 
     @classmethod
@@ -53,22 +64,26 @@ class Retinaface(object):
     def cv2_to_pil(self, cv_img):
         return Image.fromarray(cv_img[:, :, ::-1])
     def cv2ImgAddText(self,img, label, left, top, textColor=(255, 255, 255), size=20):
-        # 将img转化为PIL格式
-        img = self.cv2_to_pil(img)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        # 将img(cv2)转化为PIL格式使用标准库
+        image_pil = Image.fromarray(img)
         #---------------#
         #   设置字体
         #---------------#
-        font = ImageFont.truetype(font='model_data/simhei.ttf', size = size)
+        font = ImageFont.truetype(font=font_path, size = size)
 
-        draw = ImageDraw.Draw(img)
+        draw = ImageDraw.Draw(image_pil)
         # 用'-'分隔label中文字
-        name,action_name = label.split('-')
+        # name,action_name = label.split('-')
+        name = label
         # 将name和action_name转化为utf-8格式
         name = name.encode('utf-8')
-        action_name = action_name.encode('utf-8')
-        draw.text((left - 10, top), str(action_name,'UTF-8'), fill=textColor, font=font ,stroke_width=2)
+        # action_name = action_name.encode('utf-8')
+        # draw.text((left - 10, top), str(action_name,'UTF-8'), fill=textColor, font=font ,stroke_width=2)
         draw.text((left, top - 40), str(name,'UTF-8'), fill=textColor, font=font ,stroke_width=2)
-        return np.asarray(img)
+        # 转化为cv2格式并返回
+        img = cv2.cvtColor(np.asarray(image_pil), cv2.COLOR_RGB2BGR)
+        return img
 
     #---------------------------------------------------#
     #   初始化Retinaface
@@ -98,7 +113,7 @@ class Retinaface(object):
     def generate(self):
         self.net        = RetinaFace(cfg=self.cfg, phase='eval', pre_train=False).eval()
         self.facenet    = Facenet(backbone=self.facenet_backbone, mode="predict").eval()
-        device          = torch.device('cpu')
+        device          = torch.device('cuda')
 
         print('Loading weights into state dict...')
         state_dict = torch.load(self.retinaface_model_path, map_location=device)
