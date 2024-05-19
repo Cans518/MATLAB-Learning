@@ -35,7 +35,6 @@ y = filter(b, a, x);  % 使用滤波器滤除噪声
 frqratio = 1;   % 控制播放速度，>1倍速
 ratio = 0.4;    % 更改采样率使基频改变 ratio>1降低（女变男）;ratio<1升高（男变女）
 y = voiceChanger(x,ratio);
-audiowrite("TransformedAudio.wav",x,frqratio*fs);
 sound(y,frqratio*fs)
 pause(length(y)/fs + 1);  % 等待音频播放完毕
 
